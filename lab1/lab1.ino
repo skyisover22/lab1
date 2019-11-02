@@ -1,5 +1,10 @@
 #include <Arduino.h>
 #include <MD_TCS230.h>
+#include "button.h"
+
+#define PIN_BUTTON_OFF 5
+
+Button buttonOff(PIN_BUTTON_OFF);
 
 #define R_OUT 6
 #define G_OUT 7
@@ -14,20 +19,20 @@ void setup()
 
 void loop() 
 {
-    for (int i = 0; i <= 5; i++)
-    {
-        set_rgb_led(255, 0, 0); //красный
-        delay(4900);
-        set_rgb_led(255, 255, 255);
-        delay(100);
-    }
-    for (int i = 0; i <= 5; i++)
-    {
-        set_rgb_led(0, 0, 255); //синий
-        delay(4900);
-        set_rgb_led(255, 255, 255);
-        delay(100);
-    }
+    if (buttonOff.wasPressed())
+      {
+         for (int i = 0; i <= 5; i++)
+          {
+              set_rgb_led(255, 0, 0); //красный
+              delay(4900);
+              set_rgb_led(255, 255, 255);
+              delay(100);
+          }
+          set_rgb_led(0, 0, 255); //синий
+          delay(30000);
+              
+      }
+   
 }
 
 void set_rgb_led(int r, int g, int b)
