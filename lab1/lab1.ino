@@ -19,19 +19,22 @@ void setup()
 
 void loop() 
 {
+    boolean p = true;
     if (buttonOff.wasPressed())
-      {
+    {
+       if (p)
+       {
+         p = false;
          for (int i = 0; i <= 5; i++)
-          {
-              set_rgb_led(255, 0, 0); //красный
-              delay(4900);
-              set_rgb_led(255, 255, 255);
-              delay(100);
+         {
+            set_rgb_led(255, 0, 0); //красный
+            delay(4900);
+            set_rgb_led(255, 255, 255);
+            delay(100);
           }
           set_rgb_led(0, 0, 255); //синий
-          delay(30000);
-              
-      }
+        }      
+    }
    
 }
 
